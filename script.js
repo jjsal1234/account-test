@@ -13,7 +13,9 @@ function signIn() {
     const username = document.getElementById("username").value;
     const password = prompt("Please enter your password"); // Simple password prompt (replace with a more secure method)
 
-    if (checkCredentials(username, password)) {
+    const accountInfo = getAccountInfo(username);
+
+    if (accountInfo && !accountInfo.banned && checkCredentials(username, password)) {
         alert("Sign-in successful!");
         closeSignInPopup();
         openProfilePopup(username);
@@ -21,6 +23,8 @@ function signIn() {
         localStorage.setItem("signedInUser", username);
         updateSignInStatus();
         updateLeaderboard();
+    } else if (accountInfo && accountInfo.banned) {
+        window.location.href = "https://jjsal1234.github.io/Coolsite/banned";
     } else {
         alert("Incorrect username or password. Please try again.");
     }
