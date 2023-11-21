@@ -11,7 +11,7 @@ function closeSignInPopup() {
 // Function to sign in
 function signIn() {
     const username = document.getElementById("username").value;
-    const password = prompt("Please enter your password"); // Simple password prompt (replace with more secure method)
+    const password = prompt("Please enter your password"); // Simple password prompt (replace with a more secure method)
 
     if (checkCredentials(username, password)) {
         alert("Sign-in successful!");
@@ -47,7 +47,7 @@ function updateSignInStatus() {
 // Function to open the profile popup
 function openProfilePopup() {
     const signedInUser = localStorage.getItem("signedInUser");
-    
+
     if (signedInUser) {
         const accountInfo = getAccountInfo(signedInUser);
         document.getElementById("profileUsername").innerText = accountInfo.username;
@@ -67,3 +67,8 @@ function signOut() {
     closeProfilePopup();
     updateSignInStatus();
 }
+
+// Check sign-in status and update buttons when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+    updateSignInStatus();
+});
