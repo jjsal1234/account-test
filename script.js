@@ -7,11 +7,17 @@ function login() {
 
     if (account) {
         if (account.verified) {
-            alert('Login successful. Welcome!');
+            showUserInfo(account);
         } else {
             alert('Account not verified. Please contact support.');
         }
     } else {
         alert('Invalid username or password. Please try again.');
     }
+}
+
+function showUserInfo(account) {
+    document.getElementById('userInfo').style.display = 'block';
+    document.getElementById('userUsername').textContent = account.username;
+    document.getElementById('userVerified').textContent = account.verified ? 'Yes' : 'No';
 }
