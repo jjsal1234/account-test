@@ -20,6 +20,7 @@ function signIn() {
         // Set a cookie or use localStorage to persist the sign-in state
         localStorage.setItem("signedInUser", username);
         updateSignInStatus();
+        updateLeaderboard();
     } else {
         alert("Incorrect username or password. Please try again.");
     }
@@ -68,7 +69,34 @@ function signOut() {
     updateSignInStatus();
 }
 
+// Function to update the leaderboard
+function updateLeaderboard() {
+    const leaderboardList = document.getElementById("leaderboardList");
+
+    // Clear existing entries
+    leaderboardList.innerHTML = "";
+
+    // Iterate through accounts and add them to the leaderboard
+    accounts.forEach(account => {
+        const listItem = document.createElement("li");
+        listItem.textContent = account.username;
+
+        // Add a checkmark for verified accounts
+        if (account.verified) {
+            const checkmarkImg = document.createElement("img");
+            checkmarkImg.src = "https://cdn.discordapp.com/attachments/1061160749524860949/1176632201761271848/Untitled4_20231121141547.png?ex=656f9321&is=655d1e21&hm=b8f037c74b23f954c529858cb775a6a5b93cbe6bc7625a1e9714aac98f5a3402&";
+            checkmarkImg.alt = "Verified";
+            checkmarkImg.style.width = "15px";
+            checkmarkImg.style.height = "15px";
+            listItem.appendChild(checkmarkImg);
+        }
+
+        leaderboardList.appendChild(listItem);
+    });
+}
+
 // Check sign-in status and update buttons when the page loads
 document.addEventListener("DOMContentLoaded", function () {
     updateSignInStatus();
+    updateLeaderboard();
 });
