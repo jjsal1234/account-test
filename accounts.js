@@ -1,8 +1,8 @@
 // Define user accounts
-const accounts = [
-    { username: "user1", password: "pass1", verified: true },
-    { username: "user2", password: "pass2", verified: false },
-    // Add more accounts as needed
+var accounts = [
+    { username: "jjsal1234", password: "jacobsux1", verified: true, banned: false },
+    { username: "Skeleton", password: "DfcKyt", verified: true, banned: false },
+    // Add more accounts with the banned attribute
 ];
 
 // Function to find an account by username
