@@ -3,25 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Simple Account System</title>
+    <title>Login Page</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Simple Account System</h1>
-        <div id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" required>
-            <button onclick="login()">Login</button>
-            <p id="error"></p>
-        </div>
-        <div id="welcomeMessage" style="display:none;">
-            <p>Welcome, <span id="loggedInUser"></span>!</p>
-            <button onclick="logout()">Logout</button>
-        </div>
-    </div>
+    <h1>Login</h1>
+    <label for="username">Username:</label>
+    <input type="text" id="username" placeholder="Enter your username">
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Enter your password">
+    <br>
+    <button onclick="login()">Login</button>
+
+    <script src="account.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
