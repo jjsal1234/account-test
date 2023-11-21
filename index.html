@@ -1,58 +1,15 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OAuth Login Example</title>
 </head>
 <body>
-    <h2>Sign Up</h2>
-    <form id="signup-form">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-
-        <button type="button" onclick="submitForm()">Sign Up</button>
-    </form>
-
-    <script>
-        function submitForm() {
-            // Get form data
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            // Create an object with user data
-            const userData = {
-                username: username,
-                email: email,
-                password: password
-            };
-
-            // Send the data to the server (in this example, a hypothetical endpoint)
-            fetch('https://example.com/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(userData),
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Handle the response from the server
-                console.log('Success:', data);
-                alert('Sign up successful!');
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert('Sign up failed. Please try again.');
-            });
-        }
-    </script>
+  <h1>OAuth Login Example</h1>
+  <a href="/auth/github">Login with GitHub</a>
+  <br>
+  <a href="/auth/google">Login with Google</a>
 </body>
 </html>
