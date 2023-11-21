@@ -17,25 +17,53 @@ function signIn() {
         alert("Sign-in successful!");
         closeSignInPopup();
         openProfilePopup(username);
+        // Set a cookie or use localStorage to persist the sign-in state
+        localStorage.setItem("signedInUser", username);
+        updateSignInStatus();
     } else {
         alert("Incorrect username or password. Please try again.");
     }
 }
 
-// Function to open the profile popup
-function openProfilePopup(username) {
-    const accountInfo = getAccountInfo(username);
+// Function to check if a user is signed in
+function isSignedIn() {
+    return localStorage.getItem("signedInUser") !== null;
+}
 
-    if (accountInfo) {
+// Function to update the visibility of sign-in and profile buttons
+function updateSignInStatus() {
+    const signInButton = document.getElementById("signInButton");
+    const profileButton = document.getElementById("profileButton");
+
+    if (isSignedIn()) {
+        signInButton.style.display = "none";
+        profileButton.style.display = "inline-block";
+    } else {
+        signInButton.style.display = "inline-block";
+        profileButton.style.display = "none";
+    }
+}
+
+// Function to open the profile popup
+function openProfilePopup() {
+    const signedInUser = localStorage.getItem("signedInUser");
+    
+    if (signedInUser) {
+        const accountInfo = getAccountInfo(signedInUser);
         document.getElementById("profileUsername").innerText = accountInfo.username;
         document.getElementById("profileVerified").innerText = accountInfo.verified ? "Yes" : "No";
         document.getElementById("profilePopup").style.display = "block";
-    } else {
-        alert("Account not found.");
     }
 }
 
 // Function to close the profile popup
 function closeProfilePopup() {
     document.getElementById("profilePopup").style.display = "none";
+}
+
+// Function to sign out
+function signOut() {
+    localStorage.removeItem("signedInUser");
+    closeProfilePopup();
+    updateSignInStatus();
 }
