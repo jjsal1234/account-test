@@ -2,6 +2,7 @@
 var accounts = [
     { username: "jjsal1234", password: "jacobsux1", verified: true, banned: false },
     { username: "Skeleton", password: "DfcKyt", verified: true, banned: false },
+    { username: "User", password: "AgsJnsHHGJSjjsdi", verified: false, banned: true },
     // Add more accounts with the banned attribute
 ];
 
