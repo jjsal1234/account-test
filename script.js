@@ -69,6 +69,16 @@ function signOut() {
     updateSignInStatus();
 }
 
+// Function to open the leaderboard popup
+function openLeaderboardPopup() {
+    document.getElementById("leaderboardPopup").style.display = "block";
+}
+
+// Function to close the leaderboard popup
+function closeLeaderboardPopup() {
+    document.getElementById("leaderboardPopup").style.display = "none";
+}
+
 // Function to update the leaderboard
 function updateLeaderboard() {
     const leaderboardList = document.getElementById("leaderboardList");
