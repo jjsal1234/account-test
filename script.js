@@ -1,4 +1,3 @@
-
 // Function to open the sign-in popup
 function openSignInPopup() {
     document.getElementById("signInPopup").style.display = "block";
@@ -16,25 +15,18 @@ function signIn() {
 
     const accountInfo = getAccountInfo(username);
 
-    if (accountInfo) {
-        if (accountInfo.banned) {
-            window.location.replace("https://jjsal1234.github.io/Coolsite/banned");
-            return;
-        }
-
-        if (checkCredentials(username, password)) {
-            alert("Sign-in successful!");
-            closeSignInPopup();
-            openProfilePopup(username, accountInfo.verified);
-            // Set a cookie or use localStorage to persist the sign-in state
-            localStorage.setItem("signedInUser", username);
-            updateSignInStatus();
-            updateLeaderboard();
-        } else {
-            alert("Incorrect username or password. Please try again.");
-        }
+    if (accountInfo && !accountInfo.banned && checkCredentials(username, password)) {
+        alert("Sign-in successful!");
+        closeSignInPopup();
+        openProfilePopup(username, accountInfo.verified);
+        // Set a cookie or use localStorage to persist the sign-in state
+        localStorage.setItem("signedInUser", username);
+        updateSignInStatus();
+        updateLeaderboard();
+    } else if (accountInfo && accountInfo.banned) {
+        window.location.href = "https://jjsal1234.github.io/Coolsite/banned";
     } else {
-        alert("Account not found. Please try again.");
+        alert("Incorrect username or password. Please try again.");
     }
 }
 
@@ -125,7 +117,7 @@ function updateLeaderboard() {
     // Iterate through accounts and add them to the leaderboard
     accounts.forEach(account => {
         const listItem = document.createElement("li");
-        listItem.textContent = account.username;
+        const usernameLink = document.createElement("a");
 
         // Add a checkmark for verified accounts
         if (account.verified) {
@@ -137,13 +129,27 @@ function updateLeaderboard() {
             listItem.appendChild(checkmarkImg);
         }
 
-        // Add a click event to view profile
-        listItem.addEventListener("click", function () {
-            handleClickOnUsername(account.username);
+        // Add an event listener to open the profile popup when clicking on the username
+        usernameLink.textContent = account.username;
+        usernameLink.href = "#";  // You can replace this with the link to the user's profile
+        usernameLink.addEventListener("click", function () {
+            openUserProfile(account.username, account.verified);
         });
 
+        listItem.appendChild(usernameLink);
         leaderboardList.appendChild(listItem);
     });
+}
+
+// Function to open the user profile popup
+function openUserProfile(username, isVerified) {
+    const accountInfo = getAccountInfo(username);
+    
+    if (accountInfo) {
+        document.getElementById("profileUsername").innerText = accountInfo.username;
+        document.getElementById("profileVerified").innerText = accountInfo.verified ? "Verified: Yes" : "Verified: No";
+        document.getElementById("profilePopup").style.display = "block";
+    }
 }
 
 // Check sign-in status and update buttons when the page loads
