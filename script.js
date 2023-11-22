@@ -104,41 +104,17 @@ function signOut() {
     updateSignInStatus();
 }
 
-// Function to open the view profile popup
-function openViewProfilePopup(username) {
-    const accountInfo = getAccountInfo(username);
-
-    if (accountInfo) {
-        document.getElementById("viewProfileUsername").innerText = accountInfo.username;
-        document.getElementById("viewProfileVerified").innerText = accountInfo.verified ? "Verified: Yes" : "Verified: No";
-        document.getElementById("viewProfilePopup").style.display = "block";
-    }
+// Function to open the leaderboard popup
+function openLeaderboardPopup() {
+    document.getElementById("leaderboardPopup").style.display = "block";
 }
 
-// Function to close the view profile popup
-function closeViewProfilePopup() {
-    document.getElementById("viewProfilePopup").style.display = "none";
+// Function to close the leaderboard popup
+function closeLeaderboardPopup() {
+    document.getElementById("leaderboardPopup").style.display = "none";
 }
 
-// Function to update the view profile text next to the view profile button
-function updateViewProfileText(accountInfo) {
-    const viewProfileText = document.getElementById("viewProfileText");
-
-    if (accountInfo) {
-        const text = accountInfo.username + (accountInfo.verified ? " <img src='https://cdn.discordapp.com/attachments/1061160749524860949/1176632201761271848/Untitled4_20231121141547.png?ex=656f9321&is=655d1e21&hm=b8f037c74b23f954c529858cb775a6a5b93cbe6bc7625a1e9714aac98f5a3402&' alt='Verified' style='width: 20px; height: 20px; margin-left: 5px;'/>" : "");
-        viewProfileText.innerHTML = text;
-    } else {
-        viewProfileText.innerHTML = "";
-    }
-}
-
-// Function to handle clicking on a username for view profile
-function handleClickOnUsername(username) {
-    openViewProfilePopup(username);
-    updateViewProfileText(getAccountInfo(username));
-}
-
-// Update the leaderboard entries to include a click event for view profile
+// Function to update the leaderboard
 function updateLeaderboard() {
     const leaderboardList = document.getElementById("leaderboardList");
 
@@ -159,11 +135,6 @@ function updateLeaderboard() {
             checkmarkImg.style.height = "20px";
             listItem.appendChild(checkmarkImg);
         }
-
-        // Add a click event to view profile
-        listItem.addEventListener("click", function () {
-            handleClickOnUsername(account.username);
-        });
 
         leaderboardList.appendChild(listItem);
     });
