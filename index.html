@@ -1,49 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Development Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Your Game Development Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: #111; /* Dark background color */
+        }
+
+        /* Navigation Bar Styles */
+        #navbar {
+            background: #222; /* Darker background color than the body */
+            overflow: hidden;
+            padding: 15px;
+        }
+
+        #navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        #navbar a:hover {
+            background-color: #555; /* Darker color on hover */
+        }
+
+        /* Account Popup Styles */
+        #accountPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #333; /* Darker background color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        #signInButton,
+        #profileButton {
+            cursor: pointer;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 14px 16px;
+            display: inline-block;
+        }
+
+        #profileText {
+            display: none;
+        }
+
+        #profileText img {
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+            margin-top: -3px;
+        }
+
+        /* Leaderboard Popup Styles */
+        #leaderboardPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #333; /* Darker background color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        #leaderboardList {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #leaderboardList li {
+            margin-bottom: 10px;
+        }
+
+        #leaderboardList a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            padding: 5px;
+        }
+
+        #leaderboardList a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- Navigation Bar -->
-<nav>
-    <div class="logo">
-        <img src="https://cdn.discordapp.com/attachments/1061160749524860949/1176278993683619990/ei_1700517095364-removebg-preview.png?ex=656e4a2e&is=655bd52e&hm=91dfd7c21d00cb1e75004c8c83b00496209f3f277b0d017eeacf5b05659913a1&" alt="Logo">
-    </div>
-    <div class="nav-buttons">
+    <!-- Navigation Bar -->
+    <div id="navbar">
         <a href="#">Home</a>
         <a href="#">Games</a>
         <a href="#">Other Sites</a>
+        <span id="signInButton" onclick="openSignInPopup()">Sign In</span>
+        <span id="profileButton" onclick="openProfilePopup()">
+            <span id="profileText"></span>
+        </span>
+        <span id="leaderboardButton" onclick="openLeaderboardPopup()">Leaderboard</span>
     </div>
-    <button id="aboutUsButton">About Us</button>
-</nav>
 
-<!-- Main Content -->
-<div class="content">
-    <!-- Your main content goes here -->
-</div>
+    <!-- Sign In Popup -->
+    <div id="signInPopup">
+        <!-- Your sign-in form goes here -->
+        <button onclick="signIn()">Sign In</button>
+        <button onclick="closeSignInPopup()">Close</button>
+    </div>
 
-<!-- Sign-in Popup -->
-<div id="signInPopup" class="popup">
-    <!-- Sign-in form goes here -->
-</div>
+    <!-- Profile Popup -->
+    <div id="profilePopup">
+        <p id="profileUsername"></p>
+        <p id="profileVerified"></p>
+        <button onclick="signOut()">Sign Out</button>
+        <button onclick="closeProfilePopup()">Close</button>
+    </div>
 
-<!-- Profile Popup -->
-<div id="profilePopup" class="popup">
-    <!-- Profile information goes here -->
-</div>
+    <!-- Leaderboard Popup -->
+    <div id="leaderboardPopup">
+        <ul id="leaderboardList"></ul>
+        <button onclick="closeLeaderboardPopup()">Close</button>
+    </div>
 
-<!-- Leaderboard Popup -->
-<div id="leaderboardPopup" class="popup">
-    <ul id="leaderboardList">
-        <!-- Leaderboard entries go here -->
-    </ul>
-</div>
+    <!-- Your website content goes here -->
 
-<!-- JavaScript -->
-<script src="script.js"></script>
+    <script>
+        // Your JavaScript code goes here
+    </script>
 </body>
+
 </html>
