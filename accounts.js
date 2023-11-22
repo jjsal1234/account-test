@@ -2,12 +2,17 @@
 
 // Sample accounts data with the "Locked" attribute
 const accounts = [
-    { username: "Tester", password: "password2", verified: true, banned: false, locked: true },
+    { username: "Tester", password: "pass", verified: true, banned: false, locked: true },
     { username: "jjsal1234", password: "jacobsux1omg", verified: true, banned: false, locked: false },
     { username: "Skeleton", password: "DfcKyt", verified: true, banned: false, locked: false },
     { username: "Cow", password: "HsdjaHjdJ", verified: false, banned: false, locked: false },
     // Add more accounts as needed
 ];
+
+// Function to get account information by username
+function getAccountInfo(username) {
+    return accounts.find(account => account.username === username);
+}
 
 // Function to check if an account is locked
 function isAccountLocked(username) {
@@ -33,7 +38,7 @@ function signIn() {
     } else if (accountInfo && accountInfo.banned) {
         window.location.href = "https://jjsal1234.github.io/Coolsite/banned";
     } else if (isAccountLocked(username)) {
-        alert("This account is locked.");
+        alert("This account is locked. Please contact support.");
     } else {
         alert("Incorrect username or password. Please try again.");
     }
