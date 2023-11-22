@@ -63,7 +63,7 @@ function updateProfileText(accountInfo) {
     const profileButton = document.getElementById("profileButton");
 
     if (accountInfo) {
-        const text = accountInfo.username + (accountInfo.verified ? " <img src='https://cdn.discordapp.com/attachments/1061160749524860949/1176632201761271848/Untitled4_20231121141547.png?ex=656f9321&is=655d1e21&hm=b8f037c74b23f954c529858cb775a6a5b93cbe6bc7625a1e9714aac98f5a3402&' alt='Verified' style='width: 20px; height: 20px; margin-left: 5px;'/>" : "");
+        const text = accountInfo.username + (accountInfo.verified ? " <img src='https://cdn.discordapp.com/attachments/1061160749524860949/1176632201761271848/Untitled4_20231121141547.png?ex=656f9321&is=655d1e21&hm=b8f037c74b23f954c529858cb775a6a5b93cbe6bc7625a1e9714aac98f5a3402&' alt='Verified' style='width: 20px; height: 20px; margin-left: 5px; margin-top: -3px;'/>" : "");
         profileText.innerHTML = text;
         profileText.style.display = "inline-block";
         profileButton.style.marginRight = "10px"; // Add margin to separate text from button
