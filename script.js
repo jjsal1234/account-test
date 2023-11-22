@@ -23,6 +23,7 @@ function signIn() {
         localStorage.setItem("signedInUser", username);
         updateSignInStatus();
         updateLeaderboard();
+        updateProfileInfoText();
     } else if (accountInfo && accountInfo.banned) {
         window.location.href = "https://jjsal1234.github.io/Coolsite/banned";
     } else {
@@ -39,19 +40,13 @@ function isSignedIn() {
 function updateSignInStatus() {
     const signInButton = document.getElementById("signInButton");
     const profileButton = document.getElementById("profileButton");
-    const profileInfoText = document.getElementById("profileInfoText");
 
     if (isSignedIn()) {
         signInButton.style.display = "none";
         profileButton.style.display = "inline-block";
-        profileInfoText.innerText = "Hello, " + localStorage.getItem("signedInUser");
-        if (getAccountInfo(localStorage.getItem("signedInUser")).verified) {
-            profileInfoText.innerHTML += " <img src='https://cdn.discordapp.com/attachments/1061160749524860949/1176632201761271848/Untitled4_20231121141547.png?ex=656f9321&is=655d1e21&hm=b8f037c74b23f954c529858cb775a6a5b93cbe6bc7625a1e9714aac98f5a3402&' alt='Verified' style='width:15px;height:15px;'>";
-        }
     } else {
         signInButton.style.display = "inline-block";
         profileButton.style.display = "none";
-        profileInfoText.innerText = "";
     }
 }
 
@@ -61,9 +56,10 @@ function openProfilePopup() {
 
     if (signedInUser) {
         const accountInfo = getAccountInfo(signedInUser);
-        document.getElementById("profileUsername").innerText = "Username: " + accountInfo.username;
-        document.getElementById("profileVerified").innerText = "Verified: " + (accountInfo.verified ? "Yes" : "No");
+        document.getElementById("profileUsername").innerText = accountInfo.username;
+        document.getElementById("profileVerified").innerText = accountInfo.verified ? "Yes" : "No";
         document.getElementById("profilePopup").style.display = "block";
+        updateProfileInfoText();
     }
 }
 
@@ -115,8 +111,24 @@ function updateLeaderboard() {
     });
 }
 
+// Function to update the profile info text
+function updateProfileInfoText() {
+    const signedInUser = localStorage.getItem("signedInUser");
+    const profileInfoText = document.getElementById("profileInfoText");
+
+    if (signedInUser) {
+        const accountInfo = getAccountInfo(signedInUser);
+        const verifiedText = accountInfo.verified ? " ✔" : "";
+        profileInfoText.innerText = `Welcome, ${signedInUser}${verifiedText}!`;
+        profileInfoText.style.display = "inline-block";
+    } else {
+        profileInfoText.style.display = "none";
+    }
+}
+
 // Check sign-in status and update buttons when the page loads
 document.addEventListener("DOMContentLoaded", function () {
     updateSignInStatus();
     updateLeaderboard();
+    updateProfileInfoText();
 });
