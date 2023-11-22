@@ -20,12 +20,6 @@ function checkCredentials(username, enteredPassword) {
     return accountInfo && accountInfo.password === enteredPassword;
 }
 
-// Function to check if an account is locked
-function isAccountLocked(username) {
-    const account = getAccountInfo(username);
-    return account && account.locked;
-}
-
 // Function to sign in
 function signIn() {
     const username = document.getElementById("username").value;
@@ -34,21 +28,23 @@ function signIn() {
     const accountInfo = getAccountInfo(username);
 
     if (accountInfo) {
-        if (accountInfo.locked) {
-            alert("This account is locked. Please contact support.");
-        } else if (accountInfo.banned) {
+        if (accountInfo.banned) {
             window.location.href = "https://jjsal1234.github.io/Coolsite/banned";
         } else {
-            if (checkCredentials(username, password)) {
-                alert("Sign-in successful!");
-                closeSignInPopup();
-                openProfilePopup(username, accountInfo.verified);
-                // Set a cookie or use localStorage to persist the sign-in state
-                localStorage.setItem("signedInUser", username);
-                updateSignInStatus();
-                updateLeaderboard();
+            if (accountInfo.locked) {
+                alert("This account is locked. Please contact support.");
             } else {
-                alert("Incorrect username or password. Please try again.");
+                if (checkCredentials(username, password)) {
+                    alert("Sign-in successful!");
+                    closeSignInPopup();
+                    openProfilePopup(username, accountInfo.verified);
+                    // Set a cookie or use localStorage to persist the sign-in state
+                    localStorage.setItem("signedInUser", username);
+                    updateSignInStatus();
+                    updateLeaderboard();
+                } else {
+                    alert("Incorrect username or password. Please try again.");
+                }
             }
         }
     } else {
