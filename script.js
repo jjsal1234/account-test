@@ -119,6 +119,9 @@ function updateLeaderboard() {
         const listItem = document.createElement("li");
         const usernameLink = document.createElement("a");
 
+        // Add an event listener to open the profile popup when clicking on the username
+        usernameLink.textContent = account.username;
+
         // Add a checkmark for verified accounts on the right side
         if (account.verified) {
             const checkmarkImg = document.createElement("img");
@@ -130,15 +133,17 @@ function updateLeaderboard() {
             listItem.appendChild(checkmarkImg);
         }
 
-        // Add an event listener to open the profile popup when clicking on the username
-        usernameLink.textContent = account.username;
         usernameLink.href = "#";  // You can replace this with the link to the user's profile
-        usernameLink.style.color = "white"; // Set text color to white
+        listItem.appendChild(usernameLink);
+
+        // Set text color to white
+        usernameLink.style.color = "white";
+
+        // Add an event listener to open the profile popup when clicking on the username
         usernameLink.addEventListener("click", function () {
             openUserProfile(account.username, account.verified);
         });
 
-        listItem.appendChild(usernameLink);
         leaderboardList.appendChild(listItem);
     });
 }
@@ -146,7 +151,7 @@ function updateLeaderboard() {
 // Function to open the user profile popup
 function openUserProfile(username, isVerified) {
     const accountInfo = getAccountInfo(username);
-    
+
     if (accountInfo) {
         document.getElementById("profileUsername").innerText = accountInfo.username;
         document.getElementById("profileVerified").innerText = accountInfo.verified ? "Verified: Yes" : "Verified: No";
