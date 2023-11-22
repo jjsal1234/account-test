@@ -3,61 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Development</title>
+    <title>Your Game Development Website</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <nav>
-        <div>
-            <a href="https://jjsal1234.github.io/Coolsite/">Home</a>
-            <a href="https://jjsal1234.github.io/Coolsite/games">Games</a>
-            <a href="https://jjsal1234.github.io/Coolsite/sites">Other Sites</a>
-            <button id="leaderboardButton" onclick="openLeaderboardPopup()">Leaderboard</button>
+<body style="background-image: url('https://cdn.discordapp.com/attachments/1061160749524860949/1176592941356154993/bg2.jpg?ex=656f6e91&is=655cf991&hm=3ea7ef1e3669f108dae941c95fe5ca52d942b714a8ffdfc9f13ef5a4e3b407ec&'); background-size: cover; background-repeat: no-repeat;">
+
+    <!-- Navigation Bar -->
+    <nav style="background-color: #111; height: 40px;">
+        <img src="https://cdn.discordapp.com/attachments/1061160749524860949/1176278993683619990/ei_1700517095364-removebg-preview.png?ex=656e4a2e&is=655bd52e&hm=91dfd7c21d00cb1e75004c8c83b00496209f3f277b0d017eeacf5b05659913a1&" alt="Logo" style="width: 30px; height: 30px; margin-left: 10px; margin-top: 5px;">
+
+        <!-- Navigation Buttons -->
+        <button onclick="openLeaderboardPopup()">Leaderboard</button>
+        <button onclick="openSignInPopup()">Sign In</button>
+        <button onclick="openProfilePopup()" id="profileButton" style="display: none;">Profile</button>
+        <button onclick="openViewProfilePopup('exampleUsername')">View Profile</button>
+
+        <!-- View Profile Popup -->
+        <div id="viewProfilePopup" class="popup">
+            <span onclick="closeViewProfilePopup()" class="close" title="Close">&times;</span>
+            <h2>View Profile</h2>
+            <p>Username: <span id="viewProfileUsername"></span></p>
+            <p>Status: <span id="viewProfileVerified"></span></p>
         </div>
-        <img src="https://cdn.discordapp.com/attachments/1061160749524860949/1176278993683619990/ei_1700517095364-removebg-preview.png?ex=656e4a2e&is=655bd52e&hm=91dfd7c21d00cb1e75004c8c83b00496209f3f277b0d017eeacf5b05659913a1&" alt="Logo">
-        <button id="signInButton" onclick="openSignInPopup()">Sign In</button>
-        <button id="profileButton" style="display:none;" onclick="openProfilePopup()">
-            <span id="profileText" style="color: white;"></span>
-        </button>
-    </nav>
 
-    <div class="container">
-        <h1>Welcome to our Game Development Website!</h1>
-        <p>Explore the world of game development with us.</p>
-    </div>
-
-    <!-- Leaderboard Popup -->
-    <div id="leaderboardPopup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closeLeaderboardPopup()">&times;</span>
-            <h2 style="font-size: 24px;">Leaderboard</h2>
-            <ul id="leaderboardList" style="font-size: 18px;"></ul>
+        <!-- Leaderboard Popup -->
+        <div id="leaderboardPopup" class="popup">
+            <span onclick="closeLeaderboardPopup()" class="close" title="Close">&times;</span>
+            <h2>Leaderboard</h2>
+            <ul id="leaderboardList"></ul>
         </div>
-    </div>
 
-    <!-- Sign-in Popup -->
-    <div id="signInPopup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closeSignInPopup()">&times;</span>
+        <!-- Sign In Popup -->
+        <div id="signInPopup" class="popup">
+            <span onclick="closeSignInPopup()" class="close" title="Close">&times;</span>
             <h2>Sign In</h2>
-            <label for="username">Username:</label>
-            <input type="text" id="username" placeholder="Enter your username">
-            <button onclick="signIn()">Sign In</button>
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <button type="button" onclick="signIn()">Sign In</button>
+            </form>
         </div>
-    </div>
 
-    <!-- Profile Popup -->
-    <div id="profilePopup" class="popup">
-        <div class="popup-content">
-            <span class="close" onclick="closeProfilePopup()">&times;</span>
+        <!-- Profile Popup -->
+        <div id="profilePopup" class="popup">
+            <span onclick="closeProfilePopup()" class="close" title="Close">&times;</span>
             <h2>Profile</h2>
-            <p id="profileUsername"></p>
-            <p id="profileVerified"></p>
+            <p>Username: <span id="profileUsername"></span></p>
+            <p>Status: <span id="profileVerified"></span></p>
             <button onclick="signOut()">Sign Out</button>
         </div>
-    </div>
+    </nav>
 
-    <script src="accounts.js"></script>
+    <!-- Rest of your HTML content -->
+
     <script src="script.js"></script>
 </body>
 </html>
