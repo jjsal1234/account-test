@@ -1,45 +1,41 @@
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #111;
-    color: white;
+    font-family: Arial, sans-serif;
+    background: url('https://cdn.discordapp.com/attachments/1061160749524860949/1176592941356154993/bg2.jpg?ex=656f6e91&is=655cf991&hm=3ea7ef1e3669f108dae941c95fe5ca52d942b714a8ffdfc9f13ef5a4e3b407ec&') no-repeat center center fixed;
+    background-size: cover;
 }
 
 nav {
-    background-color: #222;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 10px 20px;
+    background-color: #080808; /* Darker than #111 */
+}
+
+nav img {
+    height: 40px; /* Adjust the height of the logo as needed */
 }
 
 nav a {
     color: white;
     text-decoration: none;
     margin: 0 15px;
-    font-size: 18px;
+    transition: color 0.3s ease;
 }
 
-nav img {
-    width: 50px;
-    height: auto;
-}
-
-nav button {
-    background-color: #444;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 16px;
+nav a:hover {
+    color: lightblue;
 }
 
 .container {
     text-align: center;
-    padding: 50px;
+    padding: 100px;
+    color: white;
 }
 
+/* Popup Styles */
 .popup {
     display: none;
     position: fixed;
@@ -51,61 +47,35 @@ nav button {
 }
 
 .popup-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: #111;
     padding: 20px;
-    text-align: center;
-    border-radius: 8px;
+    width: 300px;
+    margin: 100px auto;
+    color: white;
+    border-radius: 5px;
 }
 
-.popup span.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+.close {
+    color: white;
+    float: right;
     font-size: 20px;
     cursor: pointer;
-    color: #888;
 }
 
-.popup h2 {
-    margin-bottom: 20px;
+.close:hover {
+    color: lightgrey;
 }
 
-.popup label {
-    display: block;
-    margin: 10px 0;
-}
-
-.popup input {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    box-sizing: border-box;
-}
-
-.popup button {
-    background-color: #444;
+/* Button Style */
+button {
+    padding: 10px 20px;
+    background-color: #4285f4;
     color: white;
     border: none;
-    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
 }
 
-#leaderboardList {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-}
-
-#leaderboardList li {
-    margin-bottom: 10px;
-}
-
-#profileText {
-    color: white;
-    margin-right: 10px;
+button:hover {
+    background-color: #2d70f0;
 }
