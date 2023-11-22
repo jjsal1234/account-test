@@ -122,6 +122,18 @@ function updateLeaderboard() {
         // Add an event listener to open the profile popup when clicking on the username
         usernameLink.textContent = account.username;
 
+        usernameLink.href = "#";  // You can replace this with the link to the user's profile
+
+        // Set text color to white
+        usernameLink.style.color = "white";
+
+        // Add an event listener to open the profile popup when clicking on the username
+        usernameLink.addEventListener("click", function () {
+            openUserProfile(account.username, account.verified);
+        });
+
+        listItem.appendChild(usernameLink);
+
         // Add a checkmark for verified accounts on the right side
         if (account.verified) {
             const checkmarkImg = document.createElement("img");
@@ -132,17 +144,6 @@ function updateLeaderboard() {
             checkmarkImg.style.marginLeft = "5px"; // Adjust margin for spacing
             listItem.appendChild(checkmarkImg);
         }
-
-        usernameLink.href = "#";  // You can replace this with the link to the user's profile
-        listItem.appendChild(usernameLink);
-
-        // Set text color to white
-        usernameLink.style.color = "white";
-
-        // Add an event listener to open the profile popup when clicking on the username
-        usernameLink.addEventListener("click", function () {
-            openUserProfile(account.username, account.verified);
-        });
 
         leaderboardList.appendChild(listItem);
     });
