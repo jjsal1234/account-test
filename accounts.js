@@ -33,19 +33,23 @@ function signIn() {
 
     const accountInfo = getAccountInfo(username);
 
-    if (accountInfo && !accountInfo.banned && !isAccountLocked(username) && checkCredentials(username, password)) {
-        alert("Sign-in successful!");
-        closeSignInPopup();
-        openProfilePopup(username, accountInfo.verified);
-        // Set a cookie or use localStorage to persist the sign-in state
-        localStorage.setItem("signedInUser", username);
-        updateSignInStatus();
-        updateLeaderboard();
-    } else if (accountInfo && accountInfo.banned) {
-        window.location.href = "https://jjsal1234.github.io/Coolsite/banned";
-    } else if (isAccountLocked(username)) {
-        alert("This account is locked. Please contact support.");
+    if (accountInfo) {
+        if (accountInfo.locked) {
+            alert("This account is locked. Please contact support.");
+        } else if (accountInfo.banned) {
+            window.location.href = "https://jjsal1234.github.io/Coolsite/banned";
+        } else if (checkCredentials(username, password)) {
+            alert("Sign-in successful!");
+            closeSignInPopup();
+            openProfilePopup(username, accountInfo.verified);
+            // Set a cookie or use localStorage to persist the sign-in state
+            localStorage.setItem("signedInUser", username);
+            updateSignInStatus();
+            updateLeaderboard();
+        } else {
+            alert("Incorrect username or password. Please try again.");
+        }
     } else {
-        alert("Incorrect username or password. Please try again.");
+        alert("Account not found. Please try again.");
     }
 }
