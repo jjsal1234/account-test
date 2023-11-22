@@ -17,7 +17,7 @@ function signIn() {
 
     if (accountInfo) {
         if (accountInfo.banned) {
-            window.location.href = "https://jjsal1234.github.io/Coolsite/banned";
+            window.location.replace("https://jjsal1234.github.io/Coolsite/banned");
             return;
         }
 
