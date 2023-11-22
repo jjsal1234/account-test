@@ -14,6 +14,12 @@ function getAccountInfo(username) {
     return accounts.find(account => account.username === username);
 }
 
+// Function to check credentials
+function checkCredentials(username, enteredPassword) {
+    const accountInfo = getAccountInfo(username);
+    return accountInfo && accountInfo.password === enteredPassword;
+}
+
 // Function to check if an account is locked
 function isAccountLocked(username) {
     const account = getAccountInfo(username);
