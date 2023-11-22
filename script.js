@@ -127,6 +127,12 @@ function updateLeaderboard() {
         // Set text color to white
         usernameLink.style.color = "white";
 
+        // Remove underline
+        usernameLink.style.textDecoration = "none";
+
+        // Increase font size
+        usernameLink.style.fontSize = "18px";
+
         // Add an event listener to open the profile popup when clicking on the username
         usernameLink.addEventListener("click", function () {
             openUserProfile(account.username, account.verified);
