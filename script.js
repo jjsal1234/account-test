@@ -88,6 +88,19 @@ function openProfilePopup() {
         const accountInfo = getAccountInfo(signedInUser);
         document.getElementById("profileUsername").innerText = accountInfo.username;
         document.getElementById("profileVerified").innerText = accountInfo.verified ? "Verified: Yes" : "Verified: No";
+        document.getElementById("profileCustomMessage").innerText = "This is a customizable message. Edit it in the script.js file.";
+
+        // Additional static content (customize as needed)
+        const additionalContent = document.getElementById("additionalContent");
+        additionalContent.innerHTML = `
+            <p>This is additional static content that you can customize.</p>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        `;
+
         document.getElementById("profilePopup").style.display = "block";
     }
 }
