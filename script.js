@@ -81,7 +81,7 @@ function updateProfileText(accountInfo) {
 }
 
 // Function to open the profile popup
-function openProfilePopup() {
+function openProfilePopup(username, isVerified) {
     const signedInUser = localStorage.getItem("signedInUser");
 
     if (signedInUser) {
