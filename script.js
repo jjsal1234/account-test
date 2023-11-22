@@ -18,7 +18,7 @@ function signIn() {
     if (accountInfo && !accountInfo.banned && checkCredentials(username, password)) {
         alert("Sign-in successful!");
         closeSignInPopup();
-        openProfilePopup(username);
+        openProfilePopup(username, accountInfo.verified);
         // Set a cookie or use localStorage to persist the sign-in state
         localStorage.setItem("signedInUser", username);
         updateSignInStatus();
@@ -39,30 +39,37 @@ function isSignedIn() {
 function updateSignInStatus() {
     const signInButton = document.getElementById("signInButton");
     const profileButton = document.getElementById("profileButton");
-    const profileInfoText = document.getElementById("profileInfoText");
 
     if (isSignedIn()) {
-        const signedInUser = localStorage.getItem("signedInUser");
-        const accountInfo = getAccountInfo(signedInUser);
-
         signInButton.style.display = "none";
         profileButton.style.display = "inline-block";
-        profileInfoText.textContent = "Welcome, " + signedInUser;
-        
-        // Add a checkmark for verified accounts
-        if (accountInfo && accountInfo.verified) {
-            const checkmarkImg = document.createElement("img");
-            checkmarkImg.src = "https://cdn.discordapp.com/attachments/1061160749524860949/1176632201761271848/Untitled4_20231121141547.png?ex=656f9321&is=655d1e21&hm=b8f037c74b23f954c529858cb775a6a5b93cbe6bc7625a1e9714aac98f5a3402&";
-            checkmarkImg.alt = "Verified";
-            checkmarkImg.style.width = "15px";
-            checkmarkImg.style.height = "15px";
-            profileInfoText.appendChild(checkmarkImg);
-        }
 
+        // Display the current account info
+        const signedInUser = localStorage.getItem("signedInUser");
+        const accountInfo = getAccountInfo(signedInUser);
+        updateProfileText(accountInfo);
     } else {
         signInButton.style.display = "inline-block";
         profileButton.style.display = "none";
-        profileInfoText.textContent = "";
+
+        // Clear the current account info when signing out
+        updateProfileText(null);
+    }
+}
+
+// Function to update the profile text next to the profile button
+function updateProfileText(accountInfo) {
+    const profileText = document.getElementById("profileText");
+    const profileButton = document.getElementById("profileButton");
+
+    if (accountInfo) {
+        const text = accountInfo.username + (accountInfo.verified ? " ✔" : ""); // Display checkmark for verified accounts
+        profileText.textContent = text;
+        profileText.style.display = "inline-block";
+        profileButton.style.marginRight = "10px"; // Add margin to separate text from button
+    } else {
+        profileText.style.display = "none";
+        profileButton.style.marginRight = "0"; // Reset margin when there's no text
     }
 }
 
