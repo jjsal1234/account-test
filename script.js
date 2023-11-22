@@ -1,3 +1,4 @@
+
 // Function to open the sign-in popup
 function openSignInPopup() {
     document.getElementById("signInPopup").style.display = "block";
@@ -135,6 +136,11 @@ function updateLeaderboard() {
             checkmarkImg.style.height = "20px";
             listItem.appendChild(checkmarkImg);
         }
+
+        // Add a click event to view profile
+        listItem.addEventListener("click", function () {
+            handleClickOnUsername(account.username);
+        });
 
         leaderboardList.appendChild(listItem);
     });
