@@ -4,7 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Development</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth-ui.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDSDZLKas3k6Y3HEdhMBT7KSaP7g-pwwoc",
+            authDomain: "database-13806.firebaseapp.com",
+            projectId: "database-13806",
+            storageBucket: "database-13806.appspot.com",
+            messagingSenderId: "143871505578",
+            appId: "1:143871505578:web:8ac3cee27ea7cbc7680cd3",
+            measurementId: "G-XPPK82TVK4"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/4.8.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/4.8.0/firebaseui.css" />
 </head>
 <body>
     <header>
@@ -30,30 +48,6 @@
         <p>This is where you can showcase and discuss your game development projects.</p>
     </section>
 
-    <!-- Add more sections or content as needed -->
-
-    <!-- Include Firebase scripts -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth-ui.js"></script>
-
-<script>
-  // Initialize Firebase with your project config
-  const firebaseConfig = {
-    apiKey: "AIzaSyDSDZLKas3k6Y3HEdhMBT7KSaP7g-pwwoc",
-    authDomain: "database-13806.firebaseapp.com",
-    projectId: "database-13806",
-    storageBucket: "database-13806.appspot.com",
-    messagingSenderId: "143871505578",
-    appId: "1:143871505578:web:8ac3cee27ea7cbc7680cd3",
-    measurementId: "G-XPPK82TVK4"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-</script>
-
-<!-- Include Firebase UI Auth script -->
-<script src="https://www.gstatic.com/firebasejs/9.6.4/firebase-auth-ui.js"></script>
-<script src="auth.js"></script>
+    <script src="auth.js"></script>
 </body>
 </html>
