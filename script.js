@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", function() {
         loginModal.style.display = "block";
     }
 
-    // Fix: Define closeLoginModal function
     window.closeLoginModal = function() {
         loginModal.style.display = "none";
     };
 
-    function login() {
+    // Fix: Define the login function
+    window.login = function() {
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
 
