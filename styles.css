@@ -1,32 +1,33 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('your-custom-background.jpg');
+    background-image: url('your-custom-background.jpg'); /* Replace with your actual background image URL */
     background-size: cover;
     background-position: center;
     font-family: 'Arial', sans-serif;
 }
 
 header {
-    background-color: #333;
-    padding: 10px; /* Adjust the padding to make the header smaller */
+    background-color: #333; /* Adjust the color of your navigation bar */
+    padding: 10px; /* Smaller padding */
     text-align: center;
 }
 
 nav {
     display: flex;
     justify-content: center;
+    margin-top: 5px; /* Adjust the margin to separate the navigation links */
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 10px; /* Adjust the margin to make the links closer */
-    font-size: 16px; /* Adjust the font size to make it smaller */
+    margin: 0 10px; /* Smaller margin */
+    font-size: 14px; /* Smaller font size */
 }
 
 section {
     text-align: center;
-    padding: 50px;
-    color: #333;
+    padding: 30px;
+    color: #333; /* Adjust the color of your content text */
 }
