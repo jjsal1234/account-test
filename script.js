@@ -14,15 +14,15 @@ document.addEventListener("DOMContentLoaded", function() {
         loginModal.style.display = "block";
     }
 
-    function closeLoginModal() {
+    // Fix: Define closeLoginModal function
+    window.closeLoginModal = function() {
         loginModal.style.display = "none";
-    }
+    };
 
     function login() {
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
 
-        // Simulate authentication (in a real system, you would validate credentials on a server)
         if (username === "demo" && password === "password") {
             closeLoginModal();
             setLoggedInUser(username);
