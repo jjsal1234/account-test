@@ -1,32 +1,61 @@
-function register(event) {
-    event.preventDefault();
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
+document.addEventListener("DOMContentLoaded", function() {
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const loginModal = document.getElementById("loginModal");
 
-    // You can use a simple text file to store user data
-    // In a real-world scenario, use a server and database
-    // Here, we'll just simulate storing data in a text file
-    localStorage.setItem(username, password);
-    alert('Registration successful!');
+    loginBtn.addEventListener("click", openLoginModal);
+    logoutBtn.addEventListener("click", logout);
 
-    // Clear the form
-    document.getElementById('username').value = '';
-    document.getElementById('password').value = '';
-}
-
-function login(event) {
-    event.preventDefault();
-    var loginUsername = document.getElementById('loginUsername').value;
-    var loginPassword = document.getElementById('loginPassword').value;
-
-    // Check if the username exists in localStorage
-    if (localStorage.getItem(loginUsername) === loginPassword) {
-        alert('Login successful!');
-    } else {
-        alert('Login failed. Please check your username and password.');
+    if (isLoggedIn()) {
+        showLogout();
     }
 
-    // Clear the form
-    document.getElementById('loginUsername').value = '';
-    document.getElementById('loginPassword').value = '';
-}
+    function openLoginModal() {
+        loginModal.style.display = "block";
+    }
+
+    function closeLoginModal() {
+        loginModal.style.display = "none";
+    }
+
+    function login() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // Simulate authentication (in a real system, you would validate credentials on a server)
+        if (username === "demo" && password === "password") {
+            closeLoginModal();
+            setLoggedInUser(username);
+            showLogout();
+        } else {
+            alert("Invalid credentials. Please try again.");
+        }
+    }
+
+    function logout() {
+        clearLoggedInUser();
+        showLogin();
+    }
+
+    function isLoggedIn() {
+        return localStorage.getItem("loggedInUser") !== null;
+    }
+
+    function setLoggedInUser(username) {
+        localStorage.setItem("loggedInUser", username);
+    }
+
+    function clearLoggedInUser() {
+        localStorage.removeItem("loggedInUser");
+    }
+
+    function showLogin() {
+        loginBtn.style.display = "inline";
+        logoutBtn.style.display = "none";
+    }
+
+    function showLogout() {
+        loginBtn.style.display = "none";
+        logoutBtn.style.display = "inline";
+    }
+});
