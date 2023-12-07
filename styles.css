@@ -1,21 +1,16 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('your-custom-background.jpg'); /* Replace with your actual background image URL */
+    background-image: url('your-custom-background.jpg');
     background-size: cover;
     background-position: center;
     font-family: 'Arial', sans-serif;
-    overflow-x: hidden; /* Hide the horizontal scrollbar */
 }
 
 header {
-    background-color: #333; /* Adjust the color of your navigation bar */
-    padding: 15px;
+    background-color: #333;
+    padding: 10px; /* Adjust the padding to make the header smaller */
     text-align: center;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
 }
 
 nav {
@@ -26,13 +21,12 @@ nav {
 nav a {
     color: white;
     text-decoration: none;
-    margin: 0 15px;
-    font-size: 18px;
+    margin: 0 10px; /* Adjust the margin to make the links closer */
+    font-size: 16px; /* Adjust the font size to make it smaller */
 }
 
 section {
     text-align: center;
-    padding: 70px 20px; /* Adjust the top padding to make room for the fixed navigation bar */
-    color: #333; /* Adjust the color of your content text */
-    margin-top: 60px; /* Adjust the top margin to move the content up */
+    padding: 50px;
+    color: #333;
 }
