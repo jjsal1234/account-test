@@ -5,6 +5,7 @@ body {
     background-size: cover;
     background-position: center;
     font-family: 'Arial', sans-serif;
+    margin-top: 60px; /* Adjust the top margin to make room for the fixed navigation bar */
 }
 
 header {
