@@ -1,61 +1,30 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const loginBtn = document.getElementById("loginBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
-    const loginModal = document.getElementById("loginModal");
+function encryptData(data) {
+    const key = 'DEVELOPMENT_ENCRYPTION_KEY'; // Change this to a secure secret key
+    return CryptoJS.AES.encrypt(JSON.stringify(data), key).toString();
+}
 
-    loginBtn.addEventListener("click", openLoginModal);
-    logoutBtn.addEventListener("click", logout);
+function decryptData(encryptedData) {
+    const key = 'DEVELOPMENT_ENCRYPTION_KEY'; // Change this to the same secret key used for encryption
+    const bytes = CryptoJS.AES.decrypt(encryptedData, key);
+    return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+}
 
-    if (isLoggedIn()) {
-        showLogout();
-    }
+function readUserData() {
+    const encryptedData = localStorage.getItem('user_data');
+    return encryptedData ? decryptData(encryptedData) : [];
+}
 
-    function openLoginModal() {
-        loginModal.style.display = "block";
-    }
+function writeUserData(data) {
+    const encryptedData = encryptData(data);
+    localStorage.setItem('user_data', encryptedData);
+}
 
-    window.closeLoginModal = function() {
-        loginModal.style.display = "none";
-    };
+// Example usage
+const userData = readUserData();
+console.log('Read user data:', userData);
 
-    // Fix: Define the login function
-    window.login = function() {
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-
-        if (username === "demo" && password === "password") {
-            closeLoginModal();
-            setLoggedInUser(username);
-            showLogout();
-        } else {
-            alert("Invalid credentials. Please try again.");
-        }
-    }
-
-    function logout() {
-        clearLoggedInUser();
-        showLogin();
-    }
-
-    function isLoggedIn() {
-        return localStorage.getItem("loggedInUser") !== null;
-    }
-
-    function setLoggedInUser(username) {
-        localStorage.setItem("loggedInUser", username);
-    }
-
-    function clearLoggedInUser() {
-        localStorage.removeItem("loggedInUser");
-    }
-
-    function showLogin() {
-        loginBtn.style.display = "inline";
-        logoutBtn.style.display = "none";
-    }
-
-    function showLogout() {
-        loginBtn.style.display = "none";
-        logoutBtn.style.display = "inline";
-    }
-});
+// Add new user
+const newUser = { username: 'newuser', password: 'newpassword' };
+userData.push(newUser);
+writeUserData(userData);
+console.log('User added:', newUser);
