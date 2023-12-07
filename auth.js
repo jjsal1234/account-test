@@ -1,3 +1,4 @@
+// Check if the user is signed in
 const isSignedIn = localStorage.getItem('isSignedIn') === 'true';
 
 // Update the navigation bar based on the user's sign-in status
