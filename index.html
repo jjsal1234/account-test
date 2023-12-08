@@ -19,24 +19,17 @@
             justify-content: space-between;
         }
 
-        header {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
+        nav {
             display: flex;
             align-items: center;
-            color: #fff;
+            justify-content: space-between;
+            background-color: #333;
+            padding: 10px;
         }
 
         h1 {
             margin: 0;
             font-size: 1.5em;
-        }
-
-        nav {
-            display: flex;
-            justify-content: flex-start;
-            background-color: #333;
-            padding: 10px;
         }
 
         nav a {
@@ -49,6 +42,25 @@
         }
 
         nav a:hover {
+            background-color: #555;
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .auth-button {
+            color: #fff;
+            background-color: #333;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .auth-button:hover {
             background-color: #555;
         }
 
@@ -70,10 +82,17 @@
 <body>
     <nav>
         <h1>Game Development</h1>
-        <a href="#home">Home</a>
-        <a href="#games">Games</a>
-        <a href="#about">About</a>
-        <!-- Add more navigation links as needed -->
+        <div>
+            <a href="#home">Home</a>
+            <a href="#games">Games</a>
+            <a href="#about">About</a>
+            <!-- Add more navigation links as needed -->
+        </div>
+
+        <div class="auth-buttons">
+            <!-- Button for Register/Login -->
+            <button class="auth-button" onclick="showAuthUI()">Register/Login</button>
+        </div>
     </nav>
 
     <main>
@@ -98,21 +117,18 @@
 
         // Initialize the FirebaseUI Widget using Firebase.
         const ui = new firebaseui.auth.AuthUI(firebase.auth());
-    </script>
 
-    <!-- Firebase Authentication Configuration and Start -->
-    <script>
-        const uiConfig = {
-            signInSuccessUrl: '/',
-            signInOptions: [
-                firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                // Add more providers as needed
-            ],
-            tosUrl: '<your-tos-url>',
-        };
-
-        ui.start('#firebaseui-auth-container', uiConfig);
+        function showAuthUI() {
+            ui.start('#firebaseui-auth-container', {
+                signInSuccessUrl: '/',
+                signInOptions: [
+                    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                    // Add more providers as needed
+                ],
+                tosUrl: '<your-tos-url>',
+            });
+        }
     </script>
 </body>
 
