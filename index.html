@@ -22,6 +22,8 @@
         header {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 10px;
+            display: flex;
+            align-items: center;
             color: #fff;
         }
 
@@ -32,10 +34,9 @@
 
         nav {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             background-color: #333;
             padding: 10px;
-            align-items: center;
         }
 
         nav a {
@@ -67,15 +68,12 @@
 </head>
 
 <body>
-    <header>
-        <h1>Game Development</h1>
-    </header>
-
     <nav>
-        <!-- Add your navigation links here -->
+        <h1>Game Development</h1>
         <a href="#home">Home</a>
         <a href="#games">Games</a>
         <a href="#about">About</a>
+        <!-- Add more navigation links as needed -->
     </nav>
 
     <main>
