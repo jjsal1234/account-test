@@ -70,13 +70,6 @@
             margin: 20px;
         }
     </style>
-
-    <!-- Firebase Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/ui/9.3.0/firebase-ui-auth.js"></script>
-<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/9.3.0/firebase-ui-auth.css" />
 </head>
 
 <body>
@@ -90,49 +83,17 @@
         </div>
 
         <div class="auth-buttons">
-            <!-- Button for Register/Login -->
-            <button class="auth-button" onclick="showAuthUI()">Register/Login</button>
+            <!-- Button for Register/Login (remove this if not needed) -->
+            <!-- <button class="auth-button" onclick="showAuthUI()">Register/Login</button> -->
         </div>
     </nav>
 
     <main>
         <h2>Welcome to our Game Development World!</h2>
         <p>Explore the latest games and discover the magic behind game development.</p>
-
+        <!-- Remove the following div if Firebase is not used -->
         <div id="firebaseui-auth-container"></div>
     </main>
-
-    <!-- Firebase Initialization -->
-    <script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyDSDZLKas3k6Y3HEdhMBT7KSaP7g-pwwoc",
-        authDomain: "database-13806.firebaseapp.com",
-        projectId: "database-13806",
-        storageBucket: "database-13806.appspot.com",
-        messagingSenderId: "143871505578",
-        appId: "1:143871505578:web:8ac3cee27ea7cbc7680cd3",
-        measurementId: "G-XPPK82TVK4"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-
-    // Initialize the FirebaseUI Widget using Firebase.
-    const ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-    document.addEventListener("DOMContentLoaded", function () {
-        window.showAuthUI = function () {
-            ui.start('#firebaseui-auth-container', {
-                signInSuccessUrl: '/',
-                signInOptions: [
-                    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                    // Add more providers as needed
-                ],
-                tosUrl: '<your-tos-url>',
-            });
-        };
-    });
-</script>
 </body>
 
 </html>
