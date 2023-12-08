@@ -104,34 +104,35 @@
 
     <!-- Firebase Initialization -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const firebaseConfig = {
-                apiKey: "YOUR_API_KEY",
-                authDomain: "YOUR_AUTH_DOMAIN",
-                projectId: "YOUR_PROJECT_ID",
-                storageBucket: "YOUR_STORAGE_BUCKET",
-                messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-                appId: "YOUR_APP_ID"
-            };
+    document.addEventListener("DOMContentLoaded", function () {
+        const firebaseConfig = {
+            apiKey: "AIzaSyDSDZLKas3k6Y3HEdhMBT7KSaP7g-pwwoc",
+            authDomain: "database-13806.firebaseapp.com",
+            projectId: "database-13806",
+            storageBucket: "database-13806.appspot.com",
+            messagingSenderId: "143871505578",
+            appId: "1:143871505578:web:8ac3cee27ea7cbc7680cd3",
+            measurementId: "G-XPPK82TVK4"
+        };
 
-            firebase.initializeApp(firebaseConfig);
+        firebase.initializeApp(firebaseConfig);
 
-            // Initialize the FirebaseUI Widget using Firebase.
-            const ui = new firebaseui.auth.AuthUI(firebase.auth());
+        // Initialize the FirebaseUI Widget using Firebase.
+        const ui = new firebaseui.auth.AuthUI(firebase.auth());
 
-            window.showAuthUI = function() {
-                ui.start('#firebaseui-auth-container', {
-                    signInSuccessUrl: '/',
-                    signInOptions: [
-                        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                        // Add more providers as needed
-                    ],
-                    tosUrl: '<your-tos-url>',
-                });
-            };
-        });
-    </script>
+        window.showAuthUI = function () {
+            ui.start('#firebaseui-auth-container', {
+                signInSuccessUrl: '/',
+                signInOptions: [
+                    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                    // Add more providers as needed
+                ],
+                tosUrl: '<your-tos-url>',
+            });
+        };
+    });
+</script>
 </body>
 
 </html>
