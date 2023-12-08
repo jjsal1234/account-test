@@ -1,14 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Hacking Game</title>
+    <title>Your Game Dev Site</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('your-custom-background-image.jpg'); /* Replace with the path to your background image */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        main {
+            text-align: center;
+            color: #fff;
+            margin: 20px;
+        }
+    </style>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/9.3.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/9.3.0/firebase-ui-auth.css" />
 </head>
+
 <body>
-    <div class="console"></div>
-    <button id="hackButton">Hack Now</button>
-    <script src="script.js"></script>
+    <header>
+        <h1>Your Game Dev Site</h1>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#games">Games</a>
+        <a href="#about">About</a>
+        <!-- Add more navigation links as needed -->
+    </nav>
+
+    <main>
+        <h2>Welcome to our Game Development World!</h2>
+        <p>Explore the latest games and discover the magic behind game development.</p>
+
+        <div id="firebaseui-auth-container"></div>
+    </main>
+
+    <!-- Firebase Initialization -->
+    <script>
+        const firebaseConfig = {
+    apiKey: "AIzaSyDSDZLKas3k6Y3HEdhMBT7KSaP7g-pwwoc",
+    authDomain: "database-13806.firebaseapp.com",
+    projectId: "database-13806",
+    storageBucket: "database-13806.appspot.com",
+    messagingSenderId: "143871505578",
+    appId: "1:143871505578:web:8ac3cee27ea7cbc7680cd3",
+    measurementId: "G-XPPK82TVK4"
+  };
+
+        firebase.initializeApp(firebaseConfig);
+
+        // Initialize the FirebaseUI Widget using Firebase.
+        const ui = new firebaseui.auth.AuthUI(firebase.auth());
+    </script>
+
+    <!-- Firebase Authentication Configuration and Start -->
+    <script>
+        const uiConfig = {
+            signInSuccessUrl: '/',
+            signInOptions: [
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                // Add more providers as needed
+            ],
+            tosUrl: '<your-tos-url>',
+        };
+
+        ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
 </body>
+
 </html>
