@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Game Dev Site</title>
+    <title>Game Development</title>
     <style>
         body {
             margin: 0;
@@ -22,8 +22,15 @@
         header {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 10px;
-            text-align: center;
+            display: flex;
+            align-items: center;
             color: #fff;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.5em;
+            flex: 1;
         }
 
         nav {
@@ -63,7 +70,7 @@
 
 <body>
     <header>
-        <h1>Your Game Dev Site</h1>
+        <h1>Game Development</h1>
     </header>
 
     <nav>
@@ -83,14 +90,13 @@
     <!-- Firebase Initialization -->
     <script>
         const firebaseConfig = {
-    apiKey: "AIzaSyDSDZLKas3k6Y3HEdhMBT7KSaP7g-pwwoc",
-    authDomain: "database-13806.firebaseapp.com",
-    projectId: "database-13806",
-    storageBucket: "database-13806.appspot.com",
-    messagingSenderId: "143871505578",
-    appId: "1:143871505578:web:8ac3cee27ea7cbc7680cd3",
-    measurementId: "G-XPPK82TVK4"
-  };
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
 
         firebase.initializeApp(firebaseConfig);
 
