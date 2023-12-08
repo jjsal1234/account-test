@@ -6,58 +6,66 @@ function hack() {
     const consoleElement = document.querySelector('.console');
     consoleElement.innerHTML = '';
 
-    // Simulate password cracking
-    crackPassword()
-        .then(() => {
-            writeToConsole('Connecting to the server...');
-            setTimeout(() => {
-                writeToConsole('Gaining access to the database...');
-                setTimeout(() => {
-                    writeToConsole('Extracting sensitive information...');
-                    setTimeout(() => {
-                        writeToConsole('Hacking successful! Data acquired.');
-                    }, 2000);
-                }, 2000);
-            }, 2000);
-        })
-        .catch(() => {
-            writeToConsole('Access denied. Incorrect password.');
-        });
+    writeToConsole('Initiating hacking sequence...');
+
+    // Simulate hacking process
+    connectToServer()
+        .then(() => gainAccessToDatabase())
+        .then(() => extractSensitiveInformation())
+        .then(() => hackFirewall())
+        .then(() => writeToConsole('Hacking successful! Data acquired.'))
+        .catch((error) => writeToConsole(`Error: ${error}`));
 }
 
-function crackPassword() {
+function connectToServer() {
     return new Promise((resolve, reject) => {
-        const targetPassword = generateRandomPassword();
-        const attempts = 3;
-
-        // Prompt user for password input
-        const enteredPassword = prompt('Enter the password:');
-
-        // Simulate password checking
+        writeToConsole('Connecting to the server...');
         setTimeout(() => {
-            if (enteredPassword === targetPassword) {
-                writeToConsole('Password accepted. Proceeding to the next step...');
+            const success = Math.random() < 0.8; // 80% success rate
+            if (success) {
                 resolve();
             } else {
-                writeToConsole(`Incorrect password. ${attempts} attempts remaining...`);
-                if (attempts > 1) {
-                    crackPassword().then(resolve).catch(reject);
-                } else {
-                    reject();
-                }
+                reject('Connection failed. Retry.');
             }
-        }, 1000);
+        }, 2000);
     });
 }
 
-function generateRandomPassword() {
-    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+';
-    let password = '';
-    for (let i = 0; i < 8; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        password += characters.charAt(randomIndex);
-    }
-    return password;
+function gainAccessToDatabase() {
+    return new Promise((resolve, reject) => {
+        writeToConsole('Gaining access to the database...');
+        setTimeout(() => {
+            const success = Math.random() < 0.8; // 80% success rate
+            if (success) {
+                resolve();
+            } else {
+                reject('Access denied. Retry.');
+            }
+        }, 2000);
+    });
+}
+
+function extractSensitiveInformation() {
+    return new Promise((resolve) => {
+        writeToConsole('Extracting sensitive information...');
+        setTimeout(() => {
+            resolve();
+        }, 2000);
+    });
+}
+
+function hackFirewall() {
+    return new Promise((resolve, reject) => {
+        writeToConsole('Attempting to bypass firewall...');
+        setTimeout(() => {
+            const success = Math.random() < 0.7; // 70% success rate
+            if (success) {
+                resolve();
+            } else {
+                reject('Firewall breach detected. Aborting mission.');
+            }
+        }, 2000);
+    });
 }
 
 function writeToConsole(message) {
