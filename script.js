@@ -1,75 +1,36 @@
-document.getElementById('hackButton').addEventListener('click', function () {
-    hack();
-});
+// Replace 'YOUR_OPENAI_API_KEY' with your actual OpenAI API key
+const apiKey = 'YOUR_OPENAI_API_KEY';
+const endpoint = 'https://api.openai.com/v1/engines/davinci-codex/completions';
 
-function hack() {
-    const consoleElement = document.querySelector('.console');
-    consoleElement.innerHTML = '';
+async function sendMessage() {
+    const userInput = document.getElementById('user-input').value;
+    appendMessage('user', userInput);
 
-    writeToConsole('Initiating hacking sequence...');
-
-    // Simulate hacking process
-    connectToServer()
-        .then(() => gainAccessToDatabase())
-        .then(() => extractSensitiveInformation())
-        .then(() => hackFirewall())
-        .then(() => writeToConsole('Hacking successful! Data acquired.'))
-        .catch((error) => writeToConsole(`Error: ${error}`));
+    const botResponse = await getBotResponse(userInput);
+    appendMessage('bot', botResponse);
 }
 
-function connectToServer() {
-    return new Promise((resolve, reject) => {
-        writeToConsole('Connecting to the server...');
-        setTimeout(() => {
-            const success = Math.random() < 0.8; // 80% success rate
-            if (success) {
-                resolve();
-            } else {
-                reject('Connection failed. Retry.');
-            }
-        }, 2000);
+async function getBotResponse(userInput) {
+    const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+            prompt: userInput,
+            max_tokens: 150,
+        }),
     });
+
+    const data = await response.json();
+    return data.choices[0].text.trim();
 }
 
-function gainAccessToDatabase() {
-    return new Promise((resolve, reject) => {
-        writeToConsole('Gaining access to the database...');
-        setTimeout(() => {
-            const success = Math.random() < 0.8; // 80% success rate
-            if (success) {
-                resolve();
-            } else {
-                reject('Access denied. Retry.');
-            }
-        }, 2000);
-    });
-}
-
-function extractSensitiveInformation() {
-    return new Promise((resolve) => {
-        writeToConsole('Extracting sensitive information...');
-        setTimeout(() => {
-            resolve();
-        }, 2000);
-    });
-}
-
-function hackFirewall() {
-    return new Promise((resolve, reject) => {
-        writeToConsole('Attempting to bypass firewall...');
-        setTimeout(() => {
-            const success = Math.random() < 0.7; // 70% success rate
-            if (success) {
-                resolve();
-            } else {
-                reject('Firewall breach detected. Aborting mission.');
-            }
-        }, 2000);
-    });
-}
-
-function writeToConsole(message) {
-    const consoleElement = document.querySelector('.console');
-    consoleElement.innerHTML += `<p>${message}</p>`;
-    consoleElement.scrollTop = consoleElement.scrollHeight;
+function appendMessage(sender, text) {
+    const chatDisplay = document.getElementById('chat-display');
+    const messageElement = document.createElement('div');
+    messageElement.classList.add(sender);
+    messageElement.innerText = text;
+    chatDisplay.appendChild(messageElement);
 }
