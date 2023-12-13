@@ -108,31 +108,24 @@
 
     <script src="adminAcc.js"></script>
     <script>
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-            // Find the account by username
-            const account = accounts.find(acc => acc.username === username);
+        // Find the account by username
+        const account = accounts.find(acc => acc.username === username);
 
-            if (account) {
-                // Hash the entered password and compare it with the stored hash
-                const enteredPasswordHash = CryptoJS.SHA256(password).toString();
-
-                // Debugging: log the entered and stored password hashes
-                console.log("Entered Password Hash:", enteredPasswordHash);
-                console.log("Stored Password Hash:", account.passwordHash);
-
-                // IMPORTANT: Ensure you are comparing the hashed passwords
-                if (enteredPasswordHash === account.passwordHash) {
-                    alert(`Welcome, ${account.username}!`);
-                } else {
-                    alert('Invalid credentials. Please try again.');
-                }
+        if (account) {
+            // Compare plain text passwords
+            if (password === account.password) {
+                alert(`Welcome, ${account.username}!`);
             } else {
                 alert('Invalid credentials. Please try again.');
             }
+        } else {
+            alert('Invalid credentials. Please try again.');
         }
-    </script>
+    }
+</script>
 </body>
 </html>
