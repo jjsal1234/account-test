@@ -70,21 +70,21 @@
         button:hover {
             background-color: #777;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <!-- <header>
-        <h1>Admin Panel Header</h1>
-    </header> -->
-
-    <nav>
-        <a href="#">Dashboard</a>
-        <a href="#">Users</a>
-        <a href="#">Settings</a>
+    <nav id="nav">
+        <a href="#" id="dashboardLink">Dashboard</a>
+        <a href="#" id="usersLink" class="hidden">Users</a>
+        <a href="#" id="settingsLink" class="hidden">Settings</a>
         <!-- Add more links as needed -->
     </nav>
 
-    <main>
+    <main id="main">
         <h2>Dashboard</h2>
 
         <!-- Example form in the admin panel -->
@@ -111,6 +111,14 @@
             if (account) {
                 // Compare plain text passwords
                 if (password === account.password) {
+                    // Hide the login form
+                    document.getElementById('loginForm').classList.add('hidden');
+
+                    // Show the navigation links
+                    document.getElementById('dashboardLink').classList.remove('hidden');
+                    document.getElementById('usersLink').classList.remove('hidden');
+                    document.getElementById('settingsLink').classList.remove('hidden');
+
                     alert(`Welcome, ${account.username}!`);
                 } else {
                     alert('Invalid credentials. Please try again.');
