@@ -74,18 +74,22 @@
         .hidden {
             display: none;
         }
+
+        .dashboard-item {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <nav id="nav">
-        <a href="#" id="dashboardLink">Dashboard</a>
+        <a href="#" id="dashboardLink" class="hidden">Dashboard</a>
         <a href="#" id="usersLink" class="hidden">Users</a>
         <a href="#" id="settingsLink" class="hidden">Settings</a>
         <!-- Add more links as needed -->
     </nav>
 
     <main id="main">
-        <h2>Dashboard</h2>
+        <h2 id="dashboardTitle" class="hidden">Dashboard</h2>
 
         <!-- Example form in the admin panel -->
         <form id="loginForm">
@@ -97,6 +101,21 @@
 
             <button type="button" onclick="login()">Login</button>
         </form>
+
+        <div id="dashboardContent" class="hidden">
+            <div class="dashboard-item"><a href="#">Item 1</a></div>
+            <div class="dashboard-item"><a href="#">Item 2</a></div>
+            <div class="dashboard-item"><a href="#">Item 3</a></div>
+            <div class="dashboard-item"><a href="#">Item 4</a></div>
+            <div class="dashboard-item"><a href="#">Item 5</a></div>
+            <div class="dashboard-item"><a href="#">Item 6</a></div>
+            <div class="dashboard-item"><a href="#">Item 7</a></div>
+            <div class="dashboard-item"><a href="#">Item 8</a></div>
+            <div class="dashboard-item"><a href="#">Item 9</a></div>
+            <div class="dashboard-item"><a href="#">Item 10</a></div>
+            <div class="dashboard-item"><a href="#">Item 11</a></div>
+            <div class="dashboard-item"><a href="#">Item 12</a></div>
+        </div>
     </main>
 
     <script src="adminAcc.js"></script>
@@ -114,10 +133,12 @@
                     // Hide the login form
                     document.getElementById('loginForm').classList.add('hidden');
 
-                    // Show the navigation links
+                    // Show the navigation links and dashboard content
                     document.getElementById('dashboardLink').classList.remove('hidden');
                     document.getElementById('usersLink').classList.remove('hidden');
                     document.getElementById('settingsLink').classList.remove('hidden');
+                    document.getElementById('dashboardTitle').classList.remove('hidden');
+                    document.getElementById('dashboardContent').classList.remove('hidden');
 
                     alert(`Welcome, ${account.username}!`);
                 } else {
