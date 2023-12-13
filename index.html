@@ -3,14 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
+    <title>Admin Panel</title>
+    <script src="https://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script>
+    <style>
+        /* Your styles here */
+    </style>
 </head>
 <body>
-    <div id="chat-container">
-        <div id="chat-display"></div>
-        <input type="text" id="user-input" placeholder="Type your message...">
-        <button onclick="sendMessage()">Send</button>
-    </div>
-    <script src="script.js"></script>
+    <header>
+        <h1>Admin Panel</h1>
+    </header>
+
+    <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Users</a>
+        <a href="#">Settings</a>
+        <!-- Add more links as needed -->
+    </nav>
+
+    <main>
+        <h2>Dashboard</h2>
+
+        <!-- Example form in the admin panel -->
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </main>
+
+    <script src="adminAcc.js"></script>
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Find the account by username
+            const account = accounts.find(acc => acc.username === username);
+
+            if (account) {
+                // Hash the entered password and compare it with the stored hash
+                const enteredPasswordHash = CryptoJS.SHA256(password).toString();
+                if (enteredPasswordHash === account.passwordHash) {
+                    alert(`Welcome, ${account.username}!`);
+                } else {
+                    alert('Invalid credentials. Please try again.');
+                }
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        }
+    </script>
 </body>
 </html>
