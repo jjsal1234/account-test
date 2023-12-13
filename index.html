@@ -118,6 +118,12 @@
             if (account) {
                 // Hash the entered password and compare it with the stored hash
                 const enteredPasswordHash = CryptoJS.SHA256(password).toString();
+
+                // Debugging: log the entered and stored password hashes
+                console.log("Entered Password Hash:", enteredPasswordHash);
+                console.log("Stored Password Hash:", account.passwordHash);
+
+                // IMPORTANT: Ensure you are comparing the hashed passwords
                 if (enteredPasswordHash === account.passwordHash) {
                     alert(`Welcome, ${account.username}!`);
                 } else {
