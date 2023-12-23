@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to Your Social Media Platform</h1>
+    
+    <script>
+        // Function to get URL parameters
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Check if a username parameter is present in the URL
+        var usernameParam = getParameterByName('username');
+
+        // Check if there is an active session (optional)
+        var sessionUsername = "<?php echo isset($_SESSION['user_id']) ? htmlspecialchars($_SESSION['user_id']) : ''; ?>";
+
+        // Display a welcome message
+        if (usernameParam) {
+            alert("Welcome, " + usernameParam + "!");
+        } else if (sessionUsername) {
+            alert("Welcome back, " + sessionUsername + "!");
+        } else {
+            alert("Welcome to the home page!");
+        }
+    </script>
+
+    <!-- Your main content for the home page goes here -->
+    <p>Hello, <?php echo isset($_GET['username']) ? htmlspecialchars($_GET['username']) : 'Guest'; ?>!</p>
+
+    <!-- Optional: Logout button -->
+    <form method="post" action="logout.php">
+        <input type="submit" name="logout" value="Logout">
+    </form>
+</body>
+</html>
