@@ -1,30 +1,30 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Login and Register</title>
+    <title>Game Dev Site</title>
+    <script src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="left-section">
-            <h2>Register</h2>
-            <label for="registerUsername">Username:</label>
-            <input type="text" id="registerUsername" required>
-            <label for="registerPassword">Password:</label>
-            <input type="password" id="registerPassword" required>
-            <button type="button" onclick="register()">Register</button>
-        </div>
-        <div class="right-section">
-            <h2>Login</h2>
-            <label for="loginUsername">Username:</label>
-            <input type="text" id="loginUsername" required>
-            <label for="loginPassword">Password:</label>
-            <input type="password" id="loginPassword" required>
-            <button type="button" onclick="login()">Login</button>
-        </div>
-    </div>
-    <script src="https://jjsal1234.github.io/account-test/api/71adhd78.js"></script>
+    <h1>Welcome to the Game Dev Site</h1>
+
+    <!-- Registration Form -->
+    <h2>Register</h2>
+    <form id="registerForm">
+        Username: <input type="text" id="registerUsername" required><br>
+        Password: <input type="password" id="registerPassword" required><br>
+        <button type="button" onclick="register()">Register</button>
+    </form>
+
+    <!-- Login Form -->
+    <h2>Login</h2>
+    <form id="loginForm">
+        Username: <input type="text" id="loginUsername" required><br>
+        Password: <input type="password" id="loginPassword" required><br>
+        <button type="button" onclick="login()">Login</button>
+    </form>
+
 </body>
 </html>
