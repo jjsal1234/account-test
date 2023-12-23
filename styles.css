@@ -14,20 +14,20 @@ body {
     width: 400px;
 }
 
-form {
-    background-color: #fff;
+.left-section,
+.right-section {
     padding: 20px;
-    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    color: #fff; /* Text color */
 }
 
-.left-form {
-    margin-right: 10px;
+.left-section {
+    background-color: #2980b9; /* Darker blue for left section */
 }
 
-.right-form {
-    margin-left: 10px;
+.right-section {
+    background-color: #3498db; /* Lighter blue for right section */
 }
 
 label {
@@ -37,14 +37,14 @@ label {
 
 input {
     width: 100%;
-    padding: 8px;
+    padding: 12px; /* Longer text boxes */
     margin-top: 5px;
     margin-bottom: 10px;
     box-sizing: border-box;
 }
 
 button {
-    background-color: #2980b9; /* Darker blue for buttons */
+    background-color: #2c3e50; /* Darker color for buttons */
     color: #fff;
     padding: 10px 15px;
     border: none;
@@ -53,5 +53,5 @@ button {
 }
 
 button:hover {
-    background-color: #3498db; /* Lighter blue on hover */
+    background-color: #34495e; /* Lighter color on hover */
 }
